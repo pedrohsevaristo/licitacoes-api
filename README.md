@@ -165,7 +165,7 @@ Docker is the easiest way to run the application.
 ### 1. Clone the repository
 
 ```bash
-git clone <repository-url>
+git clone https://github.com/pedrohsevaristo/licitacoes-api.git
 cd licitacoes-api
 ```
 
