@@ -122,7 +122,7 @@ GET /licitacoes/?cidade=campinas
 ```
 
 ```http
-GET /licitacoes/?modalidade=concorrencia
+GET /licitacoes/?modalidade=concorr%C3%AAncia
 ```
 
 ```http
@@ -312,7 +312,7 @@ Current scenarios include:
 - Filtering by city
 - Rejecting invalid values with `422`
 
-Tests use a separate PostgreSQL database to avoid modifying development data and to keep database behavior consistent with the application environment.
+Tests require a PostgreSQL database with a name different from the development database. The test connection needs permission to create a schema. Each test run creates and removes its own schema, keeping existing tables outside that schema intact.
 
 ## Example Request
 

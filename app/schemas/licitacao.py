@@ -14,7 +14,9 @@ class LicitacaoBase(BaseModel):
         max_length=100
     )
     valor_estimado: Decimal = Field(
-        gt=0
+        gt=0,
+        max_digits=14,
+        decimal_places=2,
     )
     modalidade: str = Field(
         min_length=2,

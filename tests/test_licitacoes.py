@@ -1,3 +1,4 @@
+import pytest
 from fastapi.testclient import TestClient
 
 
@@ -136,13 +137,16 @@ def test_filtrar_licitacoes_por_cidade(client: TestClient):
     assert data["items"][0]["cidade"] == "Campinas"
 
 
-def test_rejeitar_valor_estimado_invalido(client: TestClient):
+@pytest.mark.parametrize("valor_estimado", ["-100", "0.001", "1000000000000.00"])
+def test_rejeitar_valor_estimado_invalido(
+    client: TestClient, valor_estimado: str
+):
     response = client.post(
         "/licitacoes/",
         json={
             "titulo": "Licitação inválida",
             "cidade": "Campinas",
-            "valor_estimado": -100,
+            "valor_estimado": valor_estimado,
             "modalidade": "Pregão",
         },
     )
